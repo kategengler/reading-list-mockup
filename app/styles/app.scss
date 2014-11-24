@@ -1,3 +1,106 @@
 @import "bourbon";
 @import "base/base";
 @import "bower_components/neat/app/assets/stylesheets/_neat";
+
+.container {
+  @include outer-container;
+  @include position(fixed, em(70) 0px 0px 0px);
+
+}
+
+.navigation {
+  @include span-columns(3);
+  @include pad();
+  height: 100%;
+  overflow: auto;
+
+  ul {
+    padding-top: 1em;
+  }
+}
+
+.book-list {
+  @include span-columns(9);
+  float: none;
+  height: 100%;
+  overflow: auto;
+  ul {
+    border: $base-border;
+    .active {
+      li {
+        background-color: $light-gray;
+      }
+    }
+
+    li {
+      @include pad();
+      border-bottom: $base-border;
+
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
+  }
+}
+
+.has-third-pane .book-list {
+  @include span-columns(4);
+}
+
+.book {
+  @include span-columns(5);
+  height: 100%;
+  overflow: auto;
+
+  div {
+    @include pad();
+  }
+
+  .row {
+    @include row();
+  }
+  .image {
+    @include span-columns(2 of 5);
+  }
+}
+
+.search-bar {
+  $search-bar-border-color: $base-border-color;
+  $search-bar-border: 1px solid $search-bar-border-color;
+  $search-bar-background: lighten($search-bar-border-color, 10);
+
+  position: relative;
+  display: inline-block;
+
+  input {
+    @include box-sizing(border-box);
+    display: block;
+  }
+
+  div.search-and-submit {
+    position: relative;
+
+    input[type=search] {
+      @include appearance(none);
+      width: 100%;
+      padding: .5em .8em;
+      font-size: .9em;
+      font-style: italic;
+      border-radius: $base-border-radius;
+      margin: 0;
+    }
+
+    button[type=submit] {
+      @include position(absolute, 0em 0em 0em null);
+      outline: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      padding: 5px 10px;
+
+      img {
+        height: 12px;
+        opacity: .7;
+      }
+    }
+  }
+}
